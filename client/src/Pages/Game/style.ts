@@ -21,3 +21,7 @@ export const LabelWrapper = styled.div`
   color: red;
   display: flex;
 `;
+
+export const ScoreTitle = styled.h4``;
+
+export const GameOverTitle = styled.h1``;

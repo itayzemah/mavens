@@ -44,7 +44,6 @@ export function Game({ timeoutInMS }: GameProps) {
         navigate('/lobby');
       } else if (!isGameOver) {
         handleError('wrongKey');
-        setIsGameOver(true);
       }
     },
     [signPosition, isGameOver, handleSuccess, navigate, handleError]
@@ -59,7 +58,7 @@ export function Game({ timeoutInMS }: GameProps) {
 
   return (
     <S.GameContainer>
-      <h4>SCORE: {score}</h4>
+      <S.ScoreTitle>SCORE: {score}</S.ScoreTitle>
       <S.Board>
         <Sign value={SignPosition.Left} gamePosition={signPosition} />
         <Sign value={SignPosition.Right} gamePosition={signPosition} />

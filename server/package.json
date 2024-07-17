@@ -9,7 +9,7 @@
     "dev": "nodemon src/server.ts",
     "start": "npm run build && npm run serve",
     "serve": "node dist/server.js",
-    "db:dev": "docker run --env=POSTGRES_PASSWORD=1234 -p 5432:5432 -d postgres:latest"
+    "db:dev": "docker run  --env=POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres:latest "
   },
   "keywords": [],
   "author": "",
