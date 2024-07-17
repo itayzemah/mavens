@@ -1,0 +1,11 @@
+{
+  "watch": ["src"],
+  "ext": ".ts,.js",
+  "ignore": [],
+  "exec": "ts-node --files",
+  "env": {
+    "__DEV__": "true",
+    "SERVER_PORT": 8091,
+    "DATABASE_URL": "postgres://postgres:123456@localhost:5432/mavens"
+  }
+}

@@ -1,0 +1,25 @@
+version: "1"
+services:
+  server:
+    container_name: server
+    build:
+      context: ./
+      dockerfile: server.Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+      - "9229:9229"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # mount current dir into docker container
+      - .:/usr/src/app
+      - ./tmp:/usr/src/app/tmp
+      # ignore local node_modules, use container
+      - /usr/src/app/node_modules
+  redis:
+    container_name: redis
+    restart: always
+    image: redis/redis-stack:latest
+    ports:
+      - "6379:6379"

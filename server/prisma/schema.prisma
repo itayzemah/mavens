@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String        @id @default(uuid())
+  username    String
+  createdAt   DateTime?     @default(now())
+  updatedAt   DateTime?     @default(now())
+  gender      Gender?       @default(undetermined)
+  email       String?
+  dateOfBirth DateTime?
+  phone       String?
+  cellphone   String?
+  Leaderboard Leaderboard[]
+}
+
+enum Gender {
+  undetermined
+  male
+  female
+}
+
+model Leaderboard {
+  id              Int      @id @default(autoincrement())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  successfulSteps Int
+  createdAt       DateTime @default(now())
+}

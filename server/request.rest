@@ -1,0 +1,17 @@
+GET http://localhost:8091
+
+###
+POST http://localhost:8091/api/user
+content-type: application/json
+
+{"username":"Daria"}
+
+### Get leader-board
+GET http://localhost:8091/api/game/leader-board
+
+### Get leader-board
+PUT http://localhost:8091/api/game
+Cookie: user-id=9e88322a-46b7-4f86-9017-a4cdb8672b86
+content-type: application/json
+
+{"successfulSteps":10}
