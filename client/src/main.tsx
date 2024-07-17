@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/game',
-    element: <Game timeoutInMS={import.meta.env.TIMEOUT_IN_MS} />,
+    element: <Game timeoutInMS={import.meta.env.VITE_TIMEOUT_IN_MS} />,
   },
   {
     path: '/error',

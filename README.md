@@ -14,6 +14,7 @@
 
 1. cd into the `client` directory
 2. Run the following commands to start the client:
+3. create an `.env` file and add `VITE_TIMEOUT_IN_MS` with the relevant timeout number in milliseconds
 
 - `npm install`
 - `npm run dev`

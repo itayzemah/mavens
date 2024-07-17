@@ -7,7 +7,7 @@ export function Waiting() {
   const navigate = useNavigate();
   const { getErrorPathAndSaveScore } = useContext(GameContext);
 
-  useTimeout({ delay: Math.random() * 5000 + 1000, callback: () => navigate('/game') });
+  useTimeout({ delay: Math.random() * 4000 + 1000, callback: () => navigate('/game') });
 
   const keyDownHandler = useCallback(async () => {
     const path = await getErrorPathAndSaveScore('tooEarly');
