@@ -1,25 +1,39 @@
-version: "1"
+version: "3"
 services:
+  client:
+    container_name: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    stdin_open: true
+    volumes:
+      - ./client/src:/app/src
+        # ignore local node_modules, use container
+      - /usr/src/app/node_modules
+    ports:
+      - "5173:5173"
+    command: ["npm", "run", "dev"]
   server:
     container_name: server
     build:
-      context: ./
-      dockerfile: server.Dockerfile
+      context: ./server
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "8080:8080"
       - "9229:9229"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     volumes:
       # mount current dir into docker container
-      - .:/usr/src/app
-      - ./tmp:/usr/src/app/tmp
+      - ./server/:/usr/src/app
       # ignore local node_modules, use container
       - /usr/src/app/node_modules
-  redis:
-    container_name: redis
+  database:
+    container_name: postrags
     restart: always
-    image: redis/redis-stack:latest
+    image: postgres:14-bullseye
     ports:
-      - "6379:6379"
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: mavens
